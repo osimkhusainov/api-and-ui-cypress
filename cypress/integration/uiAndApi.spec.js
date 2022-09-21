@@ -29,7 +29,6 @@ describe("UI", () => {
   });
 
   it("Compare tags from API", () => {
-    cy.get(".tag-list a");
     homePage.getTags("@tags");
   });
 

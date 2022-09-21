@@ -101,6 +101,18 @@ describe("API methods", () => {
             expect(response.status).to.eq(200);
             expect(response.body).to.be.empty;
           });
+
+          cy.request({
+            method: "GET",
+            url: apiUrl + "/articles?limit=10&offset=0",
+            headers: {
+              Authorization: `Token ${token}`,
+            },
+          }).then(({ body }) => {
+            expect(body.articles.length).to.eq(
+              response.body.articles.length - 1
+            );
+          });
         });
     });
   });
