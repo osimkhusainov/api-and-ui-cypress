@@ -2,7 +2,7 @@
 ## In order to download and launch tests Node installed is required 
 ### 1. Download / clone current repository
 ### 2. Use `npm install` within VSCode terminal
-### 3. Use either `npm run` in order to open Cypress browser or `npm cy:run` in order to run scripts inside the terminal
+### 3. Use either `npm run test` in order to open Cypress browser or `npm run cy:run` in order to run scripts inside the terminal
 
 I used this sample website for automation test: https://angular.realworld.io/
 
