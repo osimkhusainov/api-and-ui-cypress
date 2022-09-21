@@ -1,0 +1,17 @@
+{
+  "name": "shairco",
+  "version": "1.0.0",
+  "description": "test sample for shairco",
+  "main": "index.js",
+  "scripts": {
+    "cy:run": "npx cypress run --spec 'cypress/integration/*.js'",
+    "run": "npx cypress open"
+  },
+  "author": "Osim Khusainov",
+  "license": "ISC",
+  "devDependencies": {
+    "@faker-js/faker": "^7.5.0",
+    "@testing-library/cypress": "^8.0.3",
+    "cypress": "^9.7.0"
+  }
+}
