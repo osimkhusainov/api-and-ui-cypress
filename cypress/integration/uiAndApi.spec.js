@@ -1,7 +1,7 @@
 const apiUrl = Cypress.config("apiUrl");
 
-import HomePage from "../pom/homePage";
-import NewArticlePage from "../pom/newArticlePage";
+import HomePage from "../support/pom/homePage";
+import NewArticlePage from "../support/pom/newArticlePage";
 
 const homePage = new HomePage();
 const { createArticle } = new NewArticlePage();
@@ -14,7 +14,7 @@ describe("UI", () => {
     cy.visit("/");
   });
 
-  it("Compare each likes from UI and API response", () => {
+  it("Compare each like from UI and API response", () => {
     cy.get(".article-preview button")
       .then((likes) => Cypress._.map(likes, "innerText"))
       .then((likes) => {

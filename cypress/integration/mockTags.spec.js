@@ -1,5 +1,5 @@
 const apiUrl = Cypress.config("apiUrl");
-import HomePage from "../pom/homePage";
+import HomePage from "../support/pom/homePage";
 
 const { getTags } = new HomePage();
 

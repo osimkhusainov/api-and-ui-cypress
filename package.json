@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "cy:run": "npx cypress run --spec 'cypress/integration/*.js'",
-    "test": "npx cypress open"
+    "test": "npx cypress open",
+    "test:api": "npx cypress run --spec 'cypress/integration/apiE2E.spec.js'"
   },
   "author": "Osim Khusainov",
   "license": "ISC",

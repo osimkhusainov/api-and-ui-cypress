@@ -43,11 +43,3 @@ Cypress.Commands.add("uiLogin", () => {
   cy.findByPlaceholderText("Password").type(credentials.password);
   cy.findByRole("button", { name: /Sign In/i }).click();
 });
-
-Cypress.Commands.add("findByForm", (name) => {
-  cy.get(`[formcontrolname='${name}']`);
-});
-
-Cypress.Commands.add("findByFormAndType", (formName, articleName) => {
-  cy.findByForm(formName).should("be.visible").type(articleName);
-});
