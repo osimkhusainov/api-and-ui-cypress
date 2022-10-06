@@ -12,8 +12,8 @@ describe("API methods", () => {
   before(() => cy.generateUserCreds());
 
   after(() => {
-    cy.cleareFixture("userRequestBody.json");
-    cy.cleareFixture("userResponse.json");
+    cy.cleareFixtureFile("userRequestBody.json");
+    cy.cleareFixtureFile("userResponse.json");
   });
 
   it("Create user", () => {
@@ -24,7 +24,7 @@ describe("API methods", () => {
         body: { user },
       }).then((response) => {
         expect(response.status).to.eq(200);
-        expect(response.body.user.username).to.eq(user.username);
+        expect(response.body?.user.username).to.eq(user.username);
         cy.writeUserResponse(response.body.user);
       });
     });
@@ -51,16 +51,16 @@ describe("API methods", () => {
         },
         body: { article },
       }).then((response) => {
-        const { article } = response.body;
+        const { article: articleBody } = response.body;
         expect(response.status).to.eq(200);
         expect(response.body).to.have.key("article");
-        expect(article.author?.username).to.eq(username);
-        expect(article.body).to.be.a("string");
-        expect(article.body).to.eq(article.body);
-        expect(article.title).to.eq(article.title);
-        expect(article.description).to.eq(article.description);
-        expect(article.favorited).to.eq(false);
-        expect(article.createdAt).to.be.a("string");
+        expect(articleBody.author?.username).to.eq(username);
+        expect(articleBody.body).to.be.a("string");
+        expect(articleBody.body).to.eq(article.body);
+        expect(articleBody.title).to.eq(article.title);
+        expect(articleBody.description).to.eq(article.description);
+        expect(articleBody.favorited).to.eq(false);
+        expect(articleBody.createdAt).to.be.a("string");
       });
     });
   });
@@ -77,11 +77,11 @@ describe("API methods", () => {
       }).then((response) => {
         const { articles } = response.body;
         expect(response.status).to.eq(200);
-        const createdArticleIsExist = articles.some((article) => {
+        const createdArticleIsExist = articles.some((respArticle) => {
           return (
-            article.body === article.body &&
-            article.title === article.title &&
-            article.description === article.description
+            respArticle.body === article.body &&
+            respArticle.title === article.title &&
+            respArticle.description === article.description
           );
         });
         expect(createdArticleIsExist).true;
@@ -102,10 +102,10 @@ describe("API methods", () => {
         })
         .then((response) => {
           const targetArticleForDelete = response.body.articles.find(
-            (article) =>
-              article.body === article.body &&
-              article.title === article.title &&
-              article.description === article.description
+            (respArticle) =>
+              respArticle.body === article.body &&
+              respArticle.title === article.title &&
+              respArticle.description === article.description
           );
 
           const { slug } = targetArticleForDelete;
