@@ -1,6 +1,7 @@
 class HomePage {
   getTags(endpoint) {
     cy.get(".tag-list a")
+      .should("be.visible")
       .then((tags) => Cypress._.map(tags, "innerText"))
       .then((tags) => {
         cy.wait(endpoint).then(({ response }) =>

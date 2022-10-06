@@ -1,18 +1,21 @@
 {
-  "name": "shairco",
+  "name": "cypress-automation",
   "version": "1.0.0",
-  "description": "test sample for shairco",
-  "main": "index.js",
+  "description": "Test sample",
   "scripts": {
-    "cy:run": "npx cypress run --spec 'cypress/integration/*.js'",
-    "test": "npx cypress open",
-    "test:api": "npx cypress run --spec 'cypress/integration/apiE2E.spec.js'"
+    "cy:run": "cypress run --env allure=true",
+    "allure:report": "allure generate allure-results --clean -o allure-report",
+    "test": "npm run cy:run || npm run posttest",
+    "posttest": "npm run allure:report",
+    "report:open": "allure serve"
   },
   "author": "Osim Khusainov",
   "license": "ISC",
   "devDependencies": {
     "@faker-js/faker": "^7.5.0",
+    "@shelex/cypress-allure-plugin": "^2.32.1",
     "@testing-library/cypress": "^8.0.3",
+    "allure-commandline": "^2.18.1",
     "cypress": "^9.7.0"
   }
 }
