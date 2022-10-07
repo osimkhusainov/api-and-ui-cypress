@@ -8,7 +8,7 @@
     "test": "npm run cy:run",
     "posttest": "npm run allure:report",
     "report:open": "allure serve",
-    "test:report": "npm run cy:run || npm run posttest"
+    "tests-and-report": "npm run cy:run || npm run posttest"
   },
   "author": "Osim Khusainov",
   "license": "ISC",
