@@ -5,9 +5,10 @@
   "scripts": {
     "cy:run": "cypress run --env allure=true",
     "allure:report": "allure generate --clean -o allure-report",
-    "test": "npm run cy:run || npm run posttest",
+    "test": "npm run cy:run",
     "posttest": "npm run allure:report",
-    "report:open": "allure serve"
+    "report:open": "allure serve",
+    "test:report": "npm run cy:run || npm run posttest"
   },
   "author": "Osim Khusainov",
   "license": "ISC",
