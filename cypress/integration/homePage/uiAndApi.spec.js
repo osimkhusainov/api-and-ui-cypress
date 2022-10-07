@@ -6,7 +6,7 @@ import NewArticlePage from "../../support/pom/newArticlePage";
 const homePage = new HomePage();
 const { createArticle } = new NewArticlePage();
 
-describe("UI", () => {
+describe("Home page", () => {
   beforeEach(() => {
     cy.intercept(apiUrl + "/tags").as("tags");
     cy.intercept(apiUrl + "/articles?limit=10&offset=0").as("articles");

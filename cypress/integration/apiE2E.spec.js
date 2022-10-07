@@ -11,7 +11,7 @@ const article = {
 const generateNum = (num) => Math.floor(Math.random() * num);
 console.log(generateNum(99999));
 
-describe("API methods", () => {
+describe("E2E API", () => {
   before(() => cy.generateUserCreds());
 
   after(() => {

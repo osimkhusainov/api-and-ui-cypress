@@ -1,7 +1,5 @@
 describe("Login page", () => {
-  before(() => {
-    cy.generateUserCreds();
-  });
+  before(() => cy.generateUserCreds());
   beforeEach(() => {
     cy.visit("/");
     cy.findByText("Sign up").click();
