@@ -6,11 +6,9 @@
 
 I used this sample website for automation test: https://angular.realworld.io/
 
-Cypress tests are in `cypress/integration`
+Cypress tests are in `cypress/integration/`
 
-Page object models are in `cypress/pom`
-
-Cypress Custom commands are in `cypress/support/commands.js`
+Reusable functions I've created are in `cypress/support/`
 
 ## Screenshot 
 ### Allure report 
