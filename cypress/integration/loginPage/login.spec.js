@@ -5,7 +5,7 @@ describe("Login page", () => {
     cy.findByText("Sign up").click();
   });
 
-  after(() => cy.clearFixture("userRequestBody.json"));
+  after(() => cy.cleareFixtureFile("userRequestBody.json"));
 
   it("Create new user with new creds", () => {
     cy.readFixtureFile("userRequestBody.json").then((user) => {
