@@ -13,6 +13,9 @@ Page object models are in `cypress/pom`
 Cypress Custom commands are in `cypress/support/commands.js`
 
 ## Screenshot 
+### Allure report 
+<img width="793" alt="Screen Shot 2022-10-06 at 3 55 59 PM" src="https://user-images.githubusercontent.com/57813114/194553766-c3e72fa4-ce3b-4762-ba6e-e1c028fbdefa.png">
+
 <img width="1281" alt="Screen Shot 2022-09-20 at 8 34 45 PM" src="https://user-images.githubusercontent.com/57813114/191389442-877ac1cf-edc6-4815-bb71-851b058fddbe.png">
 <img width="912" alt="Screen Shot 2022-09-20 at 8 37 58 PM" src="https://user-images.githubusercontent.com/57813114/191389449-562230de-6a9f-4621-b33e-40b256781464.png">
 
