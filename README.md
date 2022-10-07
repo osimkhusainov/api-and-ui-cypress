@@ -14,25 +14,35 @@ Cypress Custom commands are in `cypress/support/commands.js`
 
 ## Screenshot 
 ### Allure report 
-<img width="793" alt="Screen Shot 2022-10-06 at 3 55 59 PM" src="https://user-images.githubusercontent.com/57813114/194553766-c3e72fa4-ce3b-4762-ba6e-e1c028fbdefa.png">
+![2022-10-07_17-11](https://user-images.githubusercontent.com/57813114/194653052-1bc34ee8-4548-4a31-99ac-62aab7e99f79.png)
 
-<img width="1281" alt="Screen Shot 2022-09-20 at 8 34 45 PM" src="https://user-images.githubusercontent.com/57813114/191389442-877ac1cf-edc6-4815-bb71-851b058fddbe.png">
-<img width="912" alt="Screen Shot 2022-09-20 at 8 37 58 PM" src="https://user-images.githubusercontent.com/57813114/191389449-562230de-6a9f-4621-b33e-40b256781464.png">
+
+![2022-10-07_17-14](https://user-images.githubusercontent.com/57813114/194653409-a87db5c6-ce15-4578-a19a-e6293511e77b.png)
+
+
+<img width="889" alt="Screen Shot 2022-10-07 at 5 18 58 PM" src="https://user-images.githubusercontent.com/57813114/194654430-4fbc9fa6-ea44-4077-8b42-acf339f7c187.png">
+
 
 
 ## Video
 
 
 
-https://user-images.githubusercontent.com/57813114/191389400-aa18c4e5-d790-4db9-9f08-0bf7563b10c1.mp4
+https://user-images.githubusercontent.com/57813114/194653712-ce6e51e1-e049-4441-9b52-1ac0a09ad306.mp4
+
+
+
+https://user-images.githubusercontent.com/57813114/194653727-53cead86-264b-40f9-87a6-387c54915c0d.mp4
+
+
+
+https://user-images.githubusercontent.com/57813114/194653732-48a3d3dd-fcac-4a0e-bdbe-9824597745f2.mp4
 
 
 
 
-https://user-images.githubusercontent.com/57813114/191389408-0ca56ca7-7116-4827-a82b-b5922838edd7.mp4
+https://user-images.githubusercontent.com/57813114/194653783-cc1f05bd-ba1f-4685-9bca-7eb0f9a2457a.mp4
 
 
 
-
-https://user-images.githubusercontent.com/57813114/191389411-fdba3f83-7171-4a25-a796-54dbe8950c5f.mp4
 
