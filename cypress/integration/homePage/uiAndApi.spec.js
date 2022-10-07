@@ -1,7 +1,7 @@
 const apiUrl = Cypress.config("apiUrl");
 
-import HomePage from "../support/pom/homePage";
-import NewArticlePage from "../support/pom/newArticlePage";
+import HomePage from "../../support/pom/homePage";
+import NewArticlePage from "../../support/pom/newArticlePage";
 
 const homePage = new HomePage();
 const { createArticle } = new NewArticlePage();

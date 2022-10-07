@@ -17,6 +17,7 @@
 import "./commands";
 import "./fixtureCommands";
 import "./findByCommands";
+import "./pom/loginPage";
 import "@shelex/cypress-allure-plugin";
 
 // Alternatively you can use CommonJS syntax:

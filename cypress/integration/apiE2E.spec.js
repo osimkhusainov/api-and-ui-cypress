@@ -8,6 +8,9 @@ const article = {
   body: faker.random.word(),
 };
 
+const generateNum = (num) => Math.floor(Math.random() * num);
+console.log(generateNum(99999));
+
 describe("API methods", () => {
   before(() => cy.generateUserCreds());
 
