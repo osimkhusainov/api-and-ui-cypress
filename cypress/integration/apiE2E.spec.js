@@ -35,11 +35,13 @@ describe("E2E API", () => {
 
   it("Get all tags from API and assert with tags array", () => {
     // authorization is not required
-    const tags = ["implementations", "welcome", "introduction", "codebaseShow"];
     cy.request("GET", apiUrl + "/tags").then((response) => {
       expect(response.status).to.eq(200);
-      expect(response.body.tags).to.be.a("array");
-      expect(response.body.tags).to.deep.eq(tags);
+      expect(response.body?.tags).to.be.a("array");
+      const eachElementIsString = response.body?.tags.every(
+        (tag) => typeof tag === "string"
+      );
+      expect(eachElementIsString).to.be.true;
     });
   });
 
@@ -104,6 +106,7 @@ describe("E2E API", () => {
           },
         })
         .then((response) => {
+          expect(response.status).to.eq(200);
           const targetArticleForDelete = response.body.articles.find(
             (respArticle) =>
               respArticle.body === article.body &&
@@ -129,132 +132,10 @@ describe("E2E API", () => {
             headers: {
               Authorization: `Token ${token}`,
             },
-          }).then(({ body }) => {
-            expect(body.articlesCount).to.eq(response.body.articlesCount - 1);
-          });
+          }).then(({ body }) =>
+            expect(body.articlesCount).to.eq(response.body.articlesCount - 1)
+          );
         });
     });
   });
 });
-
-// function factorial(n) {
-//   if (n == 0 || n == 1) {
-//     return 1;
-//   } else {
-//     return n * factorial(n - 1);
-//   }
-// }
-// let n = 4;
-// console.log(factorial(n));
-
-// const isPrime = (num) => {
-//   for (let i = 2, s = Math.sqrt(num); i <= s; i++)
-//     if (num % i === 0) return false;
-//   return num > 1;
-// };
-
-// console.log(isPrime(4));
-
-// const cutFunc = (nums) => {
-//   for (let i = 1; i < nums.length; i++) {
-//     if (nums.length === 1) break;
-//     console.log(nums.slice(i, -i));
-//   }
-// };
-
-// cutFunc("876543210");
-
-// const f = (n) => (n <= 1 ? 1 : n * f(n - 1));
-
-// let g = f(4);
-// console.log(g);
-
-// function all(items) {
-//   for (var i = 0; i < items.length; i++) {
-//     if (items[i].length == 0) {
-//       items.splice(i, 1);
-//     }
-//   }
-// }
-// var names = ["os", " ", "al", " ", " ", "ab"];
-// console.log(all(names));
-
-// function _(func, items) {
-//   let i = 0;
-//   for (let item of items) {
-//     if (func(item)) {
-//       items[i] = itemi += 1;
-//     }
-//   }
-//   items.splice(i);
-// }
-// console.log(_());
-
-// let x = ["1", "2", "15", "-7", "300"].sort();
-
-// console.log(x);
-
-// function has(array) {
-//   let hasPos = false;
-//   let hasNeg = false;
-//   array.forEach((num) => {
-//     hasPos = num > 0;
-//     hasNeg = num < 0;
-//   });
-
-//   return [hasPos, hasNeg];
-// }
-
-// console.log(has([0, 1, 2]));
-
-// function sortBy(arr, pop) {
-//   return arr.sort((a, b) => {
-//     if (a[pop] < b[pop]) return -1;
-//     if (a[pop] > b[pop]) return 1;
-
-//     return 0;
-//   });
-// }
-
-// const arr3 = [1, 2, 3, 4];
-// const date = [0, 1, 0, 2, 0, 3];
-// console.log(sortBy());
-
-// function getVal(s) {
-//   let root = {};
-//   s.forEach((sen) => {
-//     let base = root;
-//     sen.split(" ").forEach((w) => {
-//       if (base[w] === undefined) {
-//         base[w] = {};
-//       }
-//       base = base[root];
-//     });
-//   });
-
-//   return root;
-// }
-
-// let tree = getVal(["Hello world", "Hello there"]);
-// console.log(tree);
-
-// function func(a, b) {
-//   a += 1;
-//   b.push(1);
-// }
-
-// const a = 0;
-// const b = [];
-// func(a, b);
-// console.log(a, b);
-
-// function f1(a) {
-//   if (a === 0) return 1;
-//   return a * f1(a - 1);
-// }
-// function main() {
-//   const f2 = (a, b) => Math.abs(2 * a - 3 * b);
-//   console.log(f1(f2(2, 3)));
-// }
-
-// main();
