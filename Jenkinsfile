@@ -8,13 +8,13 @@ pipeline {
         stage("Clone Git Repo"){
                 steps{
                     cleanWs()
-                    when{
-                        branch 'develop';
-                        git branch: 'develop', credentialsId: '80048f46-2c97-4687-abfe-3b74fae1c005', url: 'https://github.com/osimkhusainov/api-and-ui-cypress'
-                    }
-                    when{
-                        branch 'main';
-                        git branch: 'main', credentialsId: '80048f46-2c97-4687-abfe-3b74fae1c005', url: 'https://github.com/osimkhusainov/api-and-ui-cypress'
+                    script{
+                        if(env.BRANCH_NAME === 'develop'){
+                            git branch: 'develop', credentialsId: '80048f46-2c97-4687-abfe-3b74fae1c005', url: 'https://github.com/osimkhusainov/api-and-ui-cypress'
+                        }
+                        if(env.BRANCH_NAME === 'main'){
+                            git branch: 'main', credentialsId: '80048f46-2c97-4687-abfe-3b74fae1c005', url: 'https://github.com/osimkhusainov/api-and-ui-cypress'
+                        }
                     }
                 }
             }
