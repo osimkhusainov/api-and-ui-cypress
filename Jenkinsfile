@@ -14,15 +14,6 @@ pipeline {
                     git branch: 'develop', credentialsId: '80048f46-2c97-4687-abfe-3b74fae1c005', url: 'https://github.com/osimkhusainov/api-and-ui-cypress'
                 }
             }
-        stage("Clone Git Main Branch"){
-                when{
-                    branch 'main'
-                }
-                steps{
-                    cleanWs()
-                    git branch: 'main', credentialsId: '80048f46-2c97-4687-abfe-3b74fae1c005', url: 'https://github.com/osimkhusainov/api-and-ui-cypress'
-                }
-        }
         stage("Instal Dependencies"){
             steps{
                 sh "npm install"
