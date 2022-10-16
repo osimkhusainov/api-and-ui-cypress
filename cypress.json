@@ -1,4 +1,5 @@
 {
     "baseUrl": "https://angular.realworld.io/",
-    "apiUrl": "https://api.realworld.io/api"
+    "apiUrl": "https://api.realworld.io/api",
+    "retries": 2
 }
