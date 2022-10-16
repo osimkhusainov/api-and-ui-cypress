@@ -1,5 +1,4 @@
 import { faker } from "@faker-js/faker";
-import { it } from "mocha";
 
 const apiUrl = Cypress.config("apiUrl");
 
