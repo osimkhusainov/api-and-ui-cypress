@@ -6,9 +6,6 @@ pipeline {
     }
     stages{
         stage("Clone Git Repo"){
-                when{
-                    branch: "develop" || "main"
-                }
                 steps{
                     cleanWs()
                     git credentialsId: '80048f46-2c97-4687-abfe-3b74fae1c005', url: 'https://github.com/osimkhusainov/api-and-ui-cypress'
