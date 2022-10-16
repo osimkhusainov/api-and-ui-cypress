@@ -7,7 +7,7 @@ pipeline {
     stages{
         stage("Clone Git Repo"){
                 when{
-                    branch 'main' || 'develop'
+                    branch 'develop';
                 }
                 steps{
                     cleanWs()
