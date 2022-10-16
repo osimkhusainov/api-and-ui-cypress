@@ -6,17 +6,17 @@ pipeline {
     }
     stages{
         stage("Clone Git Repo"){
-                steps{
-                    cleanWs()
-                    when{
+                when{
                         branch 'develop'
                     }
-                        git branch: 'develop', credentialsId: '80048f46-2c97-4687-abfe-3b74fae1c005', url: 'https://github.com/osimkhusainov/api-and-ui-cypress'
-                    when{
-                        branch 'main'
-                    }
-                        git branch: 'main', credentialsId: '80048f46-2c97-4687-abfe-3b74fae1c005', url: 'https://github.com/osimkhusainov/api-and-ui-cypress'
+                    cleanWs()
+                    git branch: 'develop', credentialsId: '80048f46-2c97-4687-abfe-3b74fae1c005', url: 'https://github.com/osimkhusainov/api-and-ui-cypress'
+
+                when{
+                    branch 'main'
                 }
+                    cleanWs()
+                    git branch: 'main', credentialsId: '80048f46-2c97-4687-abfe-3b74fae1c005', url: 'https://github.com/osimkhusainov/api-and-ui-cypress'
             }
         stage("Instal Dependencies"){
             steps{
