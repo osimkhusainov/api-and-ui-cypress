@@ -1,4 +1,5 @@
 import { faker } from "@faker-js/faker";
+import { it } from "mocha";
 
 const apiUrl = Cypress.config("apiUrl");
 
@@ -18,7 +19,9 @@ describe("E2E API", () => {
     cy.cleareFixtureFile("userRequestBody.json");
     cy.cleareFixtureFile("userResponse.json");
   });
-
+  it("API login", () => {
+    cy.apiLogin().then((response) => expect(response.status).to.eq(200));
+  });
   it("Create user", () => {
     cy.readFixtureFile("userRequestBody.json").then((user) => {
       cy.request({
