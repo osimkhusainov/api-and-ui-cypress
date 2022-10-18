@@ -5,6 +5,15 @@ pipeline {
         skipDefaultCheckout(true)
     }
     stages{
+        stage("Clone Git Develop Branch"){
+                when{
+                    branch 'develop'
+                }
+                steps{
+                    cleanWs()
+                    git branch: 'develop', credentialsId: '80048f46-2c97-4687-abfe-3b74fae1c005', url: 'https://github.com/osimkhusainov/api-and-ui-cypress'
+                }
+        }
         stage("Clone Git Main Branch"){
                 when{
                     branch 'main'
@@ -12,7 +21,7 @@ pipeline {
                 steps{
                     cleanWs()
                     git branch: 'main', credentialsId: '80048f46-2c97-4687-abfe-3b74fae1c005', url: 'https://github.com/osimkhusainov/api-and-ui-cypress'
-                }
+                }    
         }
         stage("Instal Dependencies"){
             steps{
