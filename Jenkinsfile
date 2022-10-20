@@ -23,7 +23,7 @@ pipeline {
         }
         stage("Run Tests"){
             steps{
-                sh 'npm run cy:run --browser ${BROWSER} --spec ${SPEC}'
+                sh 'npx cypress run --env allure=true --browser ${BROWSER} --spec ${SPEC}'
                 sh 'npm run posttest'
             }
         }
