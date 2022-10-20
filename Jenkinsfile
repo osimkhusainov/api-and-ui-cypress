@@ -23,7 +23,8 @@ pipeline {
         }
         stage("Run Tests"){
             steps{
-                sh 'npm run test --browser ${BROWSER} --spec ${SPEC}'
+                sh 'npm run cy:run --browser ${BROWSER} --spec ${SPEC}'
+                sh 'npm run posttest'
             }
         }
     }
