@@ -1,86 +1,42 @@
-def call(int buildEnv){
-    if(buildEnv === "DEVELOP"){
-        pipeline {
-            agent any
-            tools {nodejs "node"}
-            options {
-                skipDefaultCheckout(true)
-            }
-            stages{
-                stage("Clone Git Develop Branch"){
-                        when{
-                            branch 'develop'
-                        }
-                        steps{
-                            cleanWs()
-                            git branch: 'develop', credentialsId: '80048f46-2c97-4687-abfe-3b74fae1c005', url: 'https://github.com/osimkhusainov/api-and-ui-cypress'
-                        }
-                }
-                stage("Instal Dependencies"){
-                    steps{
-                        sh "npm install"
-                    }
-                }
-                stage("Run Tests"){
-                    steps{
-                        sh "npm run test"
-                    }
-                }
-            }
-            post {
-                always {
-                    script {
-                        allure([
-                            includeProperties: false,
-                            jdk: '',
-                            properties: [],
-                            reportBuildPolicy: 'ALWAYS',
-                            results: [[path: 'target/allure-results']]
-                        ])
-                    }
-                }
+pipeline {
+    agent any
+    tools {nodejs "node"}
+    options {
+        skipDefaultCheckout(true)
+    }
+    parameters {
+        choice(name: 'SPEC', choices: ['cypress/integration/apiE2E.spec.js', 'cypress/integration/**/**'],  description: 'Ex: cypress/integration/*.spec.js')
+        choice(name: 'BROWSER', choices: ['chrome', 'edge', 'firefox'], description: 'Pick the web browser you want to use to run your scripts')
+        choice(name: 'BRANCH', choices: ['develop', 'main'])
+    }
+    stages{
+        stage("Clone Git Branch"){
+                steps{
+                    cleanWs()
+                    git branch: ${BRANCH}, credentialsId: '80048f46-2c97-4687-abfe-3b74fae1c005', url: 'https://github.com/osimkhusainov/api-and-ui-cypress'
+                } 
+        }
+        stage("Instal Dependencies"){
+            steps{
+                sh "npm install"
             }
         }
-    }else{
-        pipeline {
-            agent any
-            tools {nodejs "node"}
-            options {
-                skipDefaultCheckout(true)
+        stage("Run Tests"){
+            steps{
+                sh "npm run test --browser ${BROWSER} --spec ${SPEC}"
             }
-            stages{
-                stage("Clone Git Main Branch"){
-                        when{
-                            branch 'main'
-                        }
-                        steps{
-                            cleanWs()
-                            git branch: 'main', credentialsId: '80048f46-2c97-4687-abfe-3b74fae1c005', url: 'https://github.com/osimkhusainov/api-and-ui-cypress'
-                        }    
-                }
-                stage("Instal Dependencies"){
-                    steps{
-                        sh "npm install"
-                    }
-                }
-                stage("Run Tests"){
-                    steps{
-                        sh "npm run test"
-                    }
-                }
-            }
-            post {
-                always {
-                    script {
-                        allure([
-                            includeProperties: false,
-                            jdk: '',
-                            properties: [],
-                            reportBuildPolicy: 'ALWAYS',
-                            results: [[path: 'target/allure-results']]
-                        ])
-                    }
-                }
+        }
+    }
+    post {
+        always {
+            script {
+                allure([
+                    includeProperties: false,
+                    jdk: '',
+                    properties: [],
+                    reportBuildPolicy: 'ALWAYS',
+                    results: [[path: 'target/allure-results']]
+                ])
             }
         }
     }
