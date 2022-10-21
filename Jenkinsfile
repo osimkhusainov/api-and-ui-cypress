@@ -5,7 +5,7 @@ pipeline {
         skipDefaultCheckout(true)
     }
     parameters {
-        choice(name: 'SPEC', choices: ['cypress/integration/apiE2E.spec.js', 'cypress/integration/**/**'],  description: 'Ex: cypress/integration/*.spec.js')
+        strin(name: 'SPEC', defaultValue: 'cypress/integration/**/**',  description: 'Ex: cypress/integration/*.spec.js')
         choice(name: 'BROWSER', choices: ['chrome', 'edge', 'firefox'], description: 'Pick the web browser you want to use to run your scripts')
         gitParameter branchFilter: 'origin/(.*)', defaultValue: 'main', name: 'BRANCH', type: 'PT_BRANCH'
     }
