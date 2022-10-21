@@ -7,13 +7,13 @@ pipeline {
     parameters {
         choice(name: 'SPEC', choices: ['cypress/integration/apiE2E.spec.js', 'cypress/integration/**/**'],  description: 'Ex: cypress/integration/*.spec.js')
         choice(name: 'BROWSER', choices: ['chrome', 'edge', 'firefox'], description: 'Pick the web browser you want to use to run your scripts')
-        choice(name: 'BRANCH', choices: ['develop', 'main'])
+        gitParameter branchFilter: 'origin/(.*)', defaultValue: 'main', name: 'BRANCH', type: 'PT_BRANCH'
     }
     stages{
         stage("Clone Git Branch"){
                 steps{
                     cleanWs()
-                    git branch: '${BRANCH}', credentialsId: '80048f46-2c97-4687-abfe-3b74fae1c005', url: 'https://github.com/osimkhusainov/api-and-ui-cypress'
+                    git branch: '${params.BRANCH}', credentialsId: '80048f46-2c97-4687-abfe-3b74fae1c005', url: 'https://github.com/osimkhusainov/api-and-ui-cypress'
                 } 
         }
         stage("Instal Dependencies"){
