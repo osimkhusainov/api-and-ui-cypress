@@ -13,7 +13,7 @@ pipeline {
         stage("Clone Git Branch"){
                 steps{
                     cleanWs()
-                    git branch: '${params.BRANCH}', credentialsId: '80048f46-2c97-4687-abfe-3b74fae1c005', url: 'https://github.com/osimkhusainov/api-and-ui-cypress'
+                    git branch: '${BRANCH}', credentialsId: '80048f46-2c97-4687-abfe-3b74fae1c005', url: 'https://github.com/osimkhusainov/api-and-ui-cypress'
                 } 
         }
         stage("Instal Dependencies"){
