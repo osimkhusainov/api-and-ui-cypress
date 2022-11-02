@@ -15,17 +15,18 @@ describe("Home page", () => {
   });
 
   it("Compare each like from UI and API response", () => {
-    cy.get(".article-preview button")
-      .then((likes) => Cypress._.map(likes, "innerText"))
-      .then((likes) => {
-        cy.wait("@articles").then(({ response }) => {
+    cy.findByText("Global Feed", { selector: "a" }).click();
+    cy.wait("@articles").then(({ response }) => {
+      cy.get(".article-preview button")
+        .then((likes) => Cypress._.map(likes, "innerText"))
+        .then((likes) => {
           response.body.articles.forEach((article) => {
             expect(likes.map((like) => parseInt(like))).includes(
               article.favoritesCount
             );
           });
         });
-      });
+    });
   });
 
   it("Compare tags from API", () => {
@@ -33,7 +34,8 @@ describe("Home page", () => {
   });
 
   it("Create new article and check countable like button", () => {
-    cy.uiLogin();
+    // cy.apiLogin();
+    // cy.visit("/");
     createArticle();
     cy.findByText("Home").click();
     cy.findByText("Global Feed").should("be.visible").click();
