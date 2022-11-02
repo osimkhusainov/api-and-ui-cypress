@@ -34,6 +34,8 @@ Cypress.Commands.add("apiLogin", () => {
       email: credentials.email,
       password: credentials.password,
     },
+  }).then(({ body }) => {
+    localStorage.setItem("jwtToken", body.user.token);
   });
 });
 

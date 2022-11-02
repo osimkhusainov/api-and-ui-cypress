@@ -1,6 +1,8 @@
 describe("Login page", () => {
   before(() => cy.generateUserCreds());
+  const apiURL = Cypress.config("apiUrl");
   beforeEach(() => {
+    cy.intercept("POST", apiURL + "/users").as("newUser");
     cy.visit("/");
     cy.findByText("Sign up").click();
   });
@@ -10,9 +12,12 @@ describe("Login page", () => {
   it("Create new user with new creds", () => {
     cy.readFixtureFile("userRequestBody.json").then((user) => {
       cy.createUser({ ...user });
-      cy.get("ul.nav li")
-        .should("be.visible")
-        .and("include.text", user.username);
+      cy.wait("@newUser").then(({ response }) => {
+        expect(response?.statusCode).to.eq(200);
+        cy.get("ul.nav li")
+          .should("be.visible")
+          .and("include.text", user.username);
+      });
     });
   });
 
