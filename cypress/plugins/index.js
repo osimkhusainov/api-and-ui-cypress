@@ -20,12 +20,18 @@
 
 const allureWriter = require("@shelex/cypress-allure-plugin/writer");
 // import allureWriter from "@shelex/cypress-allure-plugin/writer";
-
+require("dotenv").config();
 // mySQL
 const mysql = require("mysql");
-function queryTestDb(query, config) {
+function queryTestDb(query) {
+  const db = {
+    host: process.env.DB_HOST,
+    user: process.env.DB_USER,
+    password: process.env.DB_PASSWORD,
+    database: process.env.DATABASE,
+  };
   // creates a new mysql connection using credentials from cypress.json env's
-  const connection = mysql.createConnection(config.env.db);
+  const connection = mysql.createConnection({ ...db });
   // start connection to db
   connection.connect();
   // exec query + disconnect to db as a Promise
@@ -42,9 +48,10 @@ function queryTestDb(query, config) {
 
 module.exports = (on, config) => {
   allureWriter(on, config);
+  config.env = process.env;
   on("task", {
     queryDb: (query) => {
-      return queryTestDb(query, config);
+      return queryTestDb(query);
     },
   });
   return config;

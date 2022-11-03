@@ -1,13 +1,5 @@
 {
     "baseUrl": "https://angular.realworld.io/",
     "apiUrl": "https://api.realworld.io/api",
-    "retries": 2,
-    "env": {
-        "db": {
-            "host": "db4free.net",
-            "user": "osimone",
-            "password": "Osim1995",
-            "database": "osimcypress"
-        }
-    }
+    "retries": 2
 }

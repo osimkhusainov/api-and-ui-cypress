@@ -25,14 +25,13 @@
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
 import "@testing-library/cypress/add-commands";
 import "cypress-file-upload";
-import credentials from "../fixtures/userCredentials.json";
 
 // API
 Cypress.Commands.add("apiLogin", () => {
   cy.request("POST", Cypress.config("apiUrl") + "/users/login", {
     user: {
-      email: credentials.email,
-      password: credentials.password,
+      email: Cypress.env("EMAIL"),
+      password: Cypress.env("PASSWORD"),
     },
   }).then(({ body }) => {
     localStorage.setItem("jwtToken", body.user.token);
@@ -42,7 +41,7 @@ Cypress.Commands.add("apiLogin", () => {
 // UI
 Cypress.Commands.add("uiLogin", () => {
   cy.findByText("Sign in").click();
-  cy.findByPlaceholderText("Email").type(credentials.email);
-  cy.findByPlaceholderText("Password").type(credentials.password);
+  cy.findByPlaceholderText("Email").type(Cypress.env("EMAIL"));
+  cy.findByPlaceholderText("Password").type(Cypress.env("PASSWORD"));
   cy.findByRole("button", { name: /Sign In/i }).click();
 });

@@ -17,7 +17,8 @@
     "@testing-library/cypress": "^8.0.3",
     "allure-commandline": "^2.18.1",
     "cypress": "^9.7.0",
-    "cypress-file-upload": "^5.0.8"
+    "cypress-file-upload": "^5.0.8",
+    "dotenv": "^16.0.3"
   },
   "dependencies": {
     "mysql": "^2.18.1"
